@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Geist Font (fallback to Inter) ─── */
+@layer base {
+  :root {
+    --color-bg: #0d1117;
+    --color-card: #161b22;
+    --color-border: #30363d;
+    --color-hover: #21262d;
+    --color-text: #c9d1d9;
+    --color-muted: #8b949e;
+    --color-accent: #7c3aed;
+    --color-accent-blue: #58a6ff;
+  }
+
+  html {
+    @apply bg-dark-bg text-dark-text;
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-dark-bg min-h-screen;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-bg;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-dark-muted;
+  }
+}
+
+@layer components {
+  /* Card component */
+  .card {
+    @apply bg-dark-card border border-dark-border rounded-xl p-5 transition-all duration-200;
+  }
+
+  .card-hover:hover {
+    @apply border-accent-violet/40 shadow-lg shadow-accent-violet/5;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-dark-card/80 backdrop-blur-md border border-dark-border/50;
+  }
+
+  /* Badge base */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  /* Severity badges */
+  .badge-critical {
+    @apply badge bg-severity-critical/15 text-severity-critical border border-severity-critical/20;
+  }
+  .badge-high {
+    @apply badge bg-severity-high/15 text-severity-high border border-severity-high/20;
+  }
+  .badge-medium {
+    @apply badge bg-severity-medium/15 text-severity-medium border border-severity-medium/20;
+  }
+  .badge-low {
+    @apply badge bg-dark-muted/15 text-dark-muted border border-dark-muted/20;
+  }
+
+  /* Category badges */
+  .badge-security {
+    @apply badge bg-red-500/15 text-red-400 border border-red-500/20;
+  }
+  .badge-logic {
+    @apply badge bg-orange-500/15 text-orange-400 border border-orange-500/20;
+  }
+  .badge-style {
+    @apply badge bg-blue-500/15 text-blue-400 border border-blue-500/20;
+  }
+  .badge-architecture {
+    @apply badge bg-purple-500/15 text-purple-400 border border-purple-500/20;
+  }
+
+  /* Status dot */
+  .status-dot {
+    @apply w-2 h-2 rounded-full inline-block;
+  }
+  .status-dot-green {
+    @apply status-dot bg-success shadow-sm shadow-success/50;
+  }
+  .status-dot-red {
+    @apply status-dot bg-danger shadow-sm shadow-danger/50;
+  }
+  .status-dot-yellow {
+    @apply status-dot bg-warning shadow-sm shadow-warning/50;
+  }
+
+  /* Input */
+  .input {
+    @apply bg-dark-subtle border border-dark-border rounded-lg px-3 py-2 text-dark-text placeholder-dark-muted focus:outline-none focus:border-accent-violet/50 focus:ring-1 focus:ring-accent-violet/20 transition-all;
+  }
+
+  /* Button */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-accent-violet hover:bg-accent-violet/90 text-white shadow-lg shadow-accent-violet/20;
+  }
+  .btn-secondary {
+    @apply btn bg-dark-hover border border-dark-border text-dark-text hover:border-dark-muted;
+  }
+  .btn-ghost {
+    @apply btn text-dark-muted hover:text-dark-text hover:bg-dark-hover;
+  }
+  .btn-danger {
+    @apply btn bg-danger/10 text-danger hover:bg-danger/20 border border-danger/20;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply bg-dark-border/50 rounded animate-skeleton;
+  }
+
+  /* Table */
+  .table-row {
+    @apply border-b border-dark-border/50 hover:bg-dark-hover/50 transition-colors;
+  }
+
+  /* Nav link */
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-dark-muted hover:text-dark-text hover:bg-dark-hover transition-all duration-200 text-sm font-medium;
+  }
+  .nav-link-active {
+    @apply nav-link text-accent-violet bg-accent-violet/10 hover:text-accent-violet hover:bg-accent-violet/10;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-violet to-accent-blue bg-clip-text text-transparent;
+  }
+
+  .glow-violet {
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.15), 0 0 60px rgba(124, 58, 237, 0.05);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.15), 0 0 60px rgba(88, 166, 255, 0.05);
+  }
+}
